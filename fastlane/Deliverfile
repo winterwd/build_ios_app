@@ -1,0 +1,68 @@
+# The Deliverfile allows you to store various iTunes Connect metadata
+# For more information, check out the docs
+# https://docs.fastlane.tools/actions/deliver
+
+# ipa("jhjr.ipa");
+force(true);
+automatic_release(true);
+run_precheck_before_submit(false);
+precheck_include_in_app_purchases(false);
+
+# skip_metadata(true);
+metadata_path("./metadata");
+
+# skip_screenshots(true);
+screenshots_path("./fastlane/screenshots");
+
+# languages(['zh-Hans']);
+
+# release_notes({
+#   'default' => "Shiny and new",
+# })
+
+# promotional_text( 
+#   "default" => "xxxx"
+# )
+
+# app_review_information(
+#   first_name: "xxxx",
+#   last_name: "xxxx",
+#   phone_number: "+86xxxx",
+#   email_address: "xxxx@xxxx.com",
+#   demo_user: "xxxx",
+#   demo_password: "xxxx",
+#   notes: ""
+# )
+
+# trade_representative_contact_information(
+#   first_name: "xxxx",
+#   last_name: "xxxx",
+#   address_line1: "xxxx",
+#   address_line2: "",
+#   address_line3: "",
+#   city_name: "xxxx",
+#   state: "xxxx",
+#   country: "xxxx",
+#   postal_code: "xxxx",
+#   phone_number: "+xxxx",
+#   email_address: "xxxx",
+# )
+
+submission_information({
+export_compliance_available_on_french_store: false,
+export_compliance_contains_proprietary_cryptography: false,
+export_compliance_contains_third_party_cryptography: false,
+export_compliance_is_exempt: false,
+export_compliance_uses_encryption: false,
+export_compliance_app_type: nil,
+export_compliance_encryption_updated: false,
+export_compliance_compliance_required: false,
+export_compliance_platform: "ios",
+content_rights_contains_third_party_content: false,
+content_rights_has_rights: false,
+add_id_info_limits_tracking: true,
+add_id_info_serves_ads: true,
+add_id_info_tracks_action: false,
+add_id_info_tracks_install: false,
+add_id_info_uses_idfa: true
+});

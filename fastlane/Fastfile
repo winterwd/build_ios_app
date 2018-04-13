@@ -1,0 +1,60 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+#默认使用平台是 ios，也就是说文件可以定义多个平台
+default_platform(:ios)
+
+platform :ios do
+
+	before_all do
+		# 设置代码签名：自动
+		enable_automatic_code_signing
+		
+		# 跟新构建版本号
+		increment_build_number(
+			build_number: ENV["build_number"]
+		)
+	end
+
+	desc "build a test App "
+	lane :beta do
+		
+		 # 调用 gym 打测试包
+		 gym(
+		 	configuration:"Debug",
+		 	export_method:"development"
+		 )
+	end
+
+	desc "build a release App  "
+	lane :release do
+
+	 # 调用 gym 打测试包
+	 gym(
+	 	configuration:"Release",
+	 	export_method:"app-store"
+	 	)
+
+	 # 上传至 iTunes Connect
+	 # deliver其他信息在Deliverfile中配置
+	 deliver(
+	    # 注意：submit_for_review这个true是提交审核，false不提交
+	    # 选择为true时Deliverfile的信息一定要配置正确，否则上传失败
+	 	submit_for_review: true,
+	 	)
+	end
+	
+	after_all do |lane|
+	end
+
+	error do |lane, exception|
+	end
+end
