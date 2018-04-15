@@ -48,6 +48,7 @@ screenshots_path("./fastlane/screenshots");
 #   email_address: "xxxx",
 # )
 
+# 如果选择提交审核，请认真对照以下参数选项，根据自家App实际情况配置，如果配置错误，将不能提交成功
 submission_information({
 export_compliance_available_on_french_store: false,
 export_compliance_contains_proprietary_cryptography: false,
